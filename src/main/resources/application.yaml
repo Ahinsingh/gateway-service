@@ -1,0 +1,52 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: gateway-service
+
+  cloud:
+    gateway:
+      routes:
+        - id: student-service
+          uri: lb://student-service
+          predicates:
+            - Path=/students/**
+        - id: catalog-service
+          uri: lb://catalog-service
+          predicates:
+            - Path=/catalog/**
+        - id: fee-service
+          uri: lb://fee-service
+          predicates:
+            - Path=/fee/**
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+resilience4j.circuitbreaker:
+  instances:
+    studentCircuitBreaker:
+      registerHealthIndicator: true
+      slidingWindowSize: 5
+      permittedNumberOfCallsInHalfOpenState: 2
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+
+    catalogCircuitBreaker:
+      slidingWindowSize: 5
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+
+    feeCircuitBreaker:
+      slidingWindowSize: 5
+      waitDurationInOpenState: 5s
+      failureRateThreshold: 50
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
