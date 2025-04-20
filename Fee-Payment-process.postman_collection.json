@@ -1,0 +1,187 @@
+{
+	"info": {
+		"_postman_id": "4ebef6c0-8e32-4242-ab13-26279dc2355f",
+		"name": "Fee-Payment-process",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "2878654"
+	},
+	"item": [
+		{
+			"name": "fee/process",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n  \"studentId\": 1,\r\n  \"paymentMode\": \"Card Payment\",\r\n  \"transactionId\": \"0004\",\r\n  \"studentClass\": \"Year001\",\r\n  \"courseCode\": \"Year001\",\r\n  \"courseId\": 2,\r\n  \"paidAmount\": 1000,\r\n  \"amount\": 1000,\r\n  \"pendingAmount\": 40000,\r\n  \"status\": \"PENDING\",\r\n  \"fullyPaid\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/fee/process",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fee",
+						"process"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Student",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:10101/fee-payment-process/students/67cd2c4fc1b84829024da64e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "10101",
+					"path": [
+						"fee-payment-process",
+						"students",
+						"67cd2c4fc1b84829024da64e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Catalog",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"courseCode\": \"Year007\",\r\n  \"courseName\": \"Year7\",\r\n  \"description\": \"This is for 7th standard course\",\r\n  \"department\": \"Year7\",\r\n  \"academicProgram\": \"English\",\r\n  \"subjects\": \"Mathd,English,Science\",\r\n  \"credits\": 700,\r\n  \"facultyId\": \"007\",\r\n  \"courseFee\": 20000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/catalog/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Student",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Jesan\",\r\n    \"grade\": \"KG2\",\r\n    \"mobileNumber\": \"9639635570\",\r\n    \"schoolName\": \"Amity\",\r\n    \"courseCode\": \"Year007\",\r\n     \"courseId\": 1,\r\n    \"studentClass\": \"Year007\",\r\n    \"pendingFee\": 0.0,\r\n    \"status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/students",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/students/hello",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"students",
+						"hello"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Receipt By Id",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/fee/receipt/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"fee",
+						"receipt",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Course By Id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/catalog/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"catalog",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
